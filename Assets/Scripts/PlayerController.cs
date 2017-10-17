@@ -87,10 +87,10 @@ public class PlayerController : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.layer == LayerMask.NameToLayer("Ground")){
-			isJumping = true;
+			isJumping = false;
 		}
 		else {
-			isJumping = false;
+			isJumping = true;
 		}
 	}
 }
