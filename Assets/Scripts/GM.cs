@@ -11,10 +11,16 @@ public class GM : MonoBehaviour {
 	public Transform spawnPoint;
 
 	public GameObject playerPrefab;
+
+	public float timeToRespawn = 1.5f;
+
+	public UI ui;
+
+	GameData data = new GameData();
 	
 	PlayerController player;
 
-	public float timeToRespawn = 1.5f;
+
 
 
 	void Awake(){
@@ -35,7 +41,17 @@ public class GM : MonoBehaviour {
 				player = obj.GetComponent<PlayerController>();
 			}
 		}
+		DisplayHudData();
 	}
+
+	public void IncrementCoinCount(){
+		data.coinCount++;
+	}
+
+	void DisplayHudData(){
+		ui.hud.txtCoinCount.text = "x " + data.coinCount;
+	}
+
 	public void RespawnPlayer(){
 		Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
 	}
