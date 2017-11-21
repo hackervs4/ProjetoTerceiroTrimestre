@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FeetCtrl : MonoBehaviour
-{
-    GameObject player;
+public class FeetCtrl : MonoBehaviour {
 
-    void Start(){
-        player = transform.parent.gameObject;
-    }
+  GameObject player;
 
-    void OnTrigger2D(Collider2D other){
-        if (other.gameObject.CompareTag("MovingPlatform")){
-            player.transform.parent = other.transform.parent.transform;
-        }
-    }
+  void Start(){
+	  player = transform.parent.gameObject;
+	  }
 
-    void OnTriggerExit2D(Collider2D other){
-        if (other.gameObject.CompareTag("MovingPlatform")){
-            player.transform.parent = null;
-        }
-    }
-}
+	  void OnTriggerEnter2D(Collider2D other){
+		  if (other.gameObject.CompareTag("MovingPlatform")){
+			  player.transform.parent = other.transform.parent.transform;
+		  }
+	  }
+	  void OnTriggerExit2D(Collider2D other){
+		  if (other.gameObject.CompareTag("MovingPlatform")){
+			  player.transform.parent = null;
+		  }
+	  }
+  }
