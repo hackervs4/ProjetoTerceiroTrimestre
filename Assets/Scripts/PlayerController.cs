@@ -131,8 +131,9 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.layer == LayerMask.NameToLayer("Ground")){
 			isJumping = false;
 		}
-		else {
-			isJumping = true;			
+		else if(other.gameObject.layer == LayerMask.NameToLayer("Enemy")) {
+			anim.SetInteger("State", 5);
+			GM.instance.HurtPlayer();
 		}
 	}
 	void OnTriggerEnter2D(Collider2D other){
